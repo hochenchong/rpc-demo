@@ -1,6 +1,7 @@
 package hochenchong;
 
 import hochenchong.model.User;
+import hochenchong.proxy.ServiceProxyFactory;
 import hochenchong.service.UserService;
 
 /**
@@ -8,8 +9,8 @@ import hochenchong.service.UserService;
  */
 public class EasyConsumerExample {
     public static void main(String[] args) {
-        // TODO 获取 UserService 实现类
-        UserService userService = null;
+        // 获取 UserService 实现类
+        UserService userService = ServiceProxyFactory.getProxy(UserService.class);
         User user = userService.getUser("zhangsan");
         if (user != null) {
             System.out.println(user.getName());
